@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="refresh" content="0; url=login.html?tab=signup">
+    <script>
+        window.location.href = "login.html?tab=signup";
+    </script>
+</head>
+<body>
+    <div class="page-wrapper">
+
+        <!-- Preloader -->
+        <div class="preloader">
+            <div class="preloader-content">
+                <div class="preloader-logo">STACKLY</div>
+                <div class="preloader-subtext">Initializing Systems...</div>
+            </div>
+        </div>
+    <p>Redirecting to <a href="login.html?tab=signup">Sign Up</a>...</p>
+    <script>
+        (function() {
+            function dismissPreloader() {
+                var pre = document.querySelector('.preloader');
+                if (pre) {
+                    pre.style.transition = 'opacity 0.5s ease';
+                    pre.style.opacity = '0';
+                    setTimeout(function() { pre.style.display = 'none'; }, 600);
+                }
+            }
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(dismissPreloader, 500);
+            });
+            setTimeout(dismissPreloader, 2500);
+        })();
+    </script>
+</body>
+</html>

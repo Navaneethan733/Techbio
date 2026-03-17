@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Contact Us - STACKLY BIO TECHNOLOGY</title>
+    <meta name="description" content="Reach out to STACKLY Bio Technology for research collaborations, service inquiries, or technical support. Our expert team is here to help.">
+    <!-- Stylesheets -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="images/favicon.webp" type="image/x-icon">
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            background: linear-gradient(135deg, #0b132b 0%, #0062FF 60%, #1b67f3 100%);
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('images/banner/banner-image1.webp') center/cover no-repeat;
+            opacity: 0.12;
+        }
+        .page-hero .breadcrumb-wrap { position: relative; z-index: 1; }
+        .page-hero h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 800; color: #fff; margin-bottom: 16px; }
+        .page-hero h1 span { color: #7eb3ff; }
+        .page-hero .breadcrumb-nav { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 15px; color: rgba(255,255,255,0.7); }
+        .page-hero .breadcrumb-nav a { color: rgba(255,255,255,0.9); text-decoration: none; }
+        .page-hero .breadcrumb-nav .sep { color: rgba(255,255,255,0.4); }
+
+        /* ===== CONTACT INFO ===== */
+        .contact-info-section { padding: 100px 0 0; }
+        .info-box-v2 {
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            height: 100%;
+            transition: all 400ms ease;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            border: 1px solid #f0f0f0;
+        }
+        .info-box-v2:hover { transform: translateY(-10px); box-shadow: 0 20px 60px rgba(0,98,255,0.12); border-color: #0062FF; }
+        .info-box-v2 .icon-box {
+            width: 70px; height: 70px;
+            background: rgba(0,98,255,0.1);
+            color: #0062FF;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 24px;
+            transition: all 400ms ease;
+        }
+        .info-box-v2:hover .icon-box { background: #0062FF; color: #fff; transform: rotateY(180deg); }
+        .info-box-v2 h4 { font-size: 20px; font-weight: 700; color: #0b132b; margin-bottom: 12px; }
+        .info-box-v2 p { font-size: 15px; color: #666; line-height: 1.6; margin: 0; }
+        .info-box-v2 a { color: #666; text-decoration: none; transition: color 300ms ease; }
+        .info-box-v2 a:hover { color: #0062FF; }
+
+        /* ===== CONTACT FORM ===== */
+        .contact-form-section { padding: 80px 0 100px; }
+        .form-wrap {
+            background: #fff;
+            padding: 60px;
+            border-radius: 30px;
+            box-shadow: 0 30px 100px rgba(0,0,0,0.08);
+            position: relative;
+            z-index: 2;
+        }
+        .form-wrap .sec-label { font-size: 14px; font-weight: 700; color: #0062FF; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; display: block; }
+        .form-wrap h2 { font-size: 36px; font-weight: 800; color: #0b132b; margin-bottom: 40px; }
+        
+        .contact-form .form-group { margin-bottom: 24px; position: relative; }
+        .contact-form label { font-size: 14px; font-weight: 600; color: #0b132b; margin-bottom: 10px; display: block; }
+        .contact-form input, 
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            background: #f8f9ff;
+            border: 2px solid #f0f2f8;
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-size: 15px;
+            color: #0b132b;
+            transition: all 300ms ease;
+        }
+        .contact-form input:focus, 
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            background: #fff;
+            border-color: #0062FF;
+            outline: none;
+            box-shadow: 0 4px 20px rgba(0,98,255,0.08);
+        }
+        .contact-form textarea { height: 160px; resize: none; }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #0062FF, #1b67f3);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 18px 45px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 400ms ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 32px rgba(0,98,255,0.25); opacity: 0.95; }
+        .submit-btn i { font-size: 18px; transition: transform 300ms ease; }
+        .submit-btn:hover i { transform: translateX(5px); }
+
+        /* ===== MAP SECTION ===== */
+        .map-section { height: 500px; width: 100%; filter: grayscale(1); transition: filter 500ms ease; border-radius: 20px; overflow: hidden; margin-top: 50px; }
+        .map-section:hover { filter: grayscale(0); }
+        .map-section iframe { width: 100%; height: 100%; border: none; }
+
+        /* ===== FAQ PREVIEW ===== */
+        .faq-preview { background: #0b132b; padding: 100px 0; color: #fff; }
+        .faq-preview h2 { font-size: 32px; font-weight: 800; margin-bottom: 40px; text-align: center; }
+        .faq-item { background: rgba(255,255,255,0.05); padding: 24px; border-radius: 16px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1); }
+        .faq-item h5 { font-size: 18px; font-weight: 700; color: #7eb3ff; margin-bottom: 12px; }
+        .faq-item p { font-size: 15px; color: rgba(255,255,255,0.6); margin: 0; line-height: 1.6; }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+
+        <!-- Preloader -->
+        <div class="preloader">
+            <div class="preloader-content">
+                <div class="preloader-logo">STACKLY</div>
+                <div class="preloader-subtext">Initializing Systems...</div>
+            </div>
+        </div>
+
+        <!-- Main Header-->
+        <header class="main-header header-style-one">
+            <!-- Main box -->
+            <div class="main-box">
+                <div class="logo-box">
+                    <div class="logo"><a href="index.html"><img src="images/logo.webp" alt="STACKLY"></a></div>
+                </div>
+
+                <!--Nav Box-->
+                <div class="nav-outer">
+                    <nav class="nav main-menu">
+                        <ul class="navigation">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li class="current"><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="outer-box">
+                    <div class="info-box">
+                        <div class="call-info">
+                            <i class="fa-solid fa-phone ring__animation"></i>
+                            <div>
+                                <h6 class="title">Phone:</h6>
+                                <a href="tel:+919876543210">+91 9876543210</a>
+                            </div>
+                        </div>
+                        <a class="btn-two" href="login.html">Login Now</a>
+                    </div>
+                    <div class="mobile-nav-toggler d-block d-lg-none"><i class="icon lnr-icon-bars"></i></div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu  -->
+            <div class="mobile-menu">
+                <div class="menu-backdrop"></div>
+                <nav class="menu-box">
+                    <div class="upper-box">
+                        <div class="nav-logo"><a href="index.html"><img src="images/logo-light.webp" alt=""></a></div>
+                        <div class="close-btn"><i class="icon fa fa-times"></i></div>
+                    </div>
+                    <ul class="navigation clearfix d-block d-lg-none"></ul>
+                    <ul class="social-links">
+                        <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <!-- Sticky Header -->
+            <div class="sticky-header">
+                <div class="auto-container">
+                    <div class="inner-container">
+                        <div class="logo"><a href="index.html"><img src="images/logo.webp" alt=""></a></div>
+                        <div class="nav-outer">
+                            <nav class="main-menu">
+                                <div class="navbar-collapse show collapse clearfix">
+                                    <ul class="navigation clearfix"></ul>
+                                </div>
+                            </nav>
+                            <div class="mobile-nav-toggler"><span class="icon lnr-icon-bars"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Hero -->
+        <section class="page-hero">
+            <div class="container">
+                <div class="breadcrumb-wrap">
+                    <h1>Get In <span>Touch</span></h1>
+                    <nav class="breadcrumb-nav">
+                        <a href="index.html">Home</a>
+                        <span class="sep"><i class="fa-solid fa-angle-right"></i></span>
+                        <span>Contact Us</span>
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Info Section -->
+        <section class="contact-info-section">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="0ms">
+                        <div class="info-box-v2">
+                            <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+                            <h4>Our Address</h4>
+                            <p>Science Park, Suite 402<br>Innovation Way, NY 10001</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="info-box-v2">
+                            <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
+                            <h4>Phone Number</h4>
+                            <p><a href="tel:+919876543210">+91 9876543210</a><br><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="200ms">
+                        <div class="info-box-v2">
+                            <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
+                            <h4>Email Us</h4>
+                            <p><a href="mailto:info@stackly.com">info@stackly.com</a><br><a href="mailto:support@stackly.com">support@stackly.com</a></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 wow fadeInUp" data-wow-delay="300ms">
+                        <div class="info-box-v2">
+                            <div class="icon-box"><i class="fa-solid fa-clock"></i></div>
+                            <h4>Office Hours</h4>
+                            <p>Mon - Fri: 9am - 6pm<br>Sat - Sun: Closed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="contact-form-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-10 offset-xl-1">
+                        <div class="form-wrap wow fadeInUp">
+                            <span class="sec-label">Send us a message</span>
+                            <h2>We'd love to hear from you</h2>
+                            
+                            <form action="#" class="contact-form">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Full Name</label>
+                                            <input type="text" name="name" placeholder="John Doe" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Email Address</label>
+                                            <input type="email" name="email" placeholder="john@example.com" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Subject</label>
+                                            <select name="subject">
+                                                <option value="General Inquiry">General Inquiry</option>
+                                                <option value="Research Partnership">Research Partnership</option>
+                                                <option value="Service Quote">Service Quote</option>
+                                                <option value="Technical Support">Technical Support</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Phone (Optional)</label>
+                                            <input type="text" name="phone" placeholder="+1 (000) 000-0000">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Your Message</label>
+                                            <textarea name="message" placeholder="How can we help you?" required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <button type="submit" class="submit-btn">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div class="map-section wow fadeIn">
+                                <!-- Placeholder for Google Maps -->
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.1616098770783!2d78.17140487481913!3d11.682956588526354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babefef7fd970bb%3A0xe11aef1a71994f9!2sStackly!5e0!3m2!1sen!2sin!4v1773661014407!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Preview -->
+        <section class="faq-preview">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <h2>Common Questions</h2>
+                        <div class="faq-item">
+                            <h5>What are your primary areas of research?</h5>
+                            <p>We focus on genomic sequencing, molecular research, and clinical trials for pharmaceutical development.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h5>How can I request a research partnership?</h5>
+                            <p>Please use the form above and select "Research Partnership" as the subject. Our business development team will reach out within 48 hours.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h5>Are your lab facilities accredited?</h5>
+                            <p>Yes, all STACKLY labs are fully accredited by the relevant international biotechnology standards boards.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Footer -->
+        <footer class="main-footer footer-style-one">
+            <div class="outer-box">
+                <div class="footer-left">
+                    <div class="logo"><a href="index.html"><img src="images/logo-light.webp" alt="Logo"></a></div>
+                    <button class="back-top-btn scroll-to-top">
+                        <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="1.5" cy="1.5" r="1.5" fill="white" />
+                            <circle cx="1.5" cy="9.5" r="1.5" fill="white" />
+                            <circle cx="1.5" cy="17.5" r="1.5" fill="white" />
+                            <circle cx="9.5" cy="1.5" r="1.5" fill="white" />
+                            <circle cx="9.5" cy="9.5" r="1.5" fill="white" />
+                            <circle cx="9.5" cy="17.5" r="1.5" fill="white" />
+                            <circle cx="17.5" cy="1.5" r="1.5" fill="white" />
+                            <circle cx="17.5" cy="9.5" r="1.5" fill="white" />
+                            <circle cx="17.5" cy="17.5" r="1.5" fill="white" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="row g-0 w-100">
+                    <div class="col-xl-8 left-column order-2 order-xl-1">
+                        <div class="footer-top">
+                            <div class="row g-4">
+                                <div class="col-lg-4">
+                                    <div class="info-item">
+                                        <ul>
+                                            <li><i class="fa-sharp fa-solid fa-phone"></i></li>
+                                            <li><span>Call Us:</span><h5 class="title">+91 9876543210</h5></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="info-item">
+                                        <ul>
+                                            <li><i class="fa-sharp fa-solid fa-envelope"></i></li>
+                                            <li><span>Email Us:</span><h5 class="title">info@stackly.com</h5></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="info-item">
+                                        <ul>
+                                            <li><i class="fa-sharp fa-solid fa-location-dot"></i></li>
+                                            <li><span>Location:</span><h5 class="title">Science Park, NY</h5></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widgets-section">
+                            <div class="row g-4">
+                                <div class="col-lg-4 footer-column">
+                                    <div class="footer-widget links-widget">
+                                        <h4 class="widget-title">Services</h4>
+                                        <div class="widget-content">
+                                            <ul class="user-links">
+                                                <li><a href="services.html">Genomic Sequencing</a></li>
+                                                <li><a href="services.html">Bioinformatics</a></li>
+                                                <li><a href="services.html">Molecular Research</a></li>
+                                                <li><a href="services.html">Clinical Trials</a></li>
+                                                <li><a href="services.html">Drug Discovery</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 footer-column">
+                                    <div class="footer-widget links-widget">
+                                        <h4 class="widget-title">Pages</h4>
+                                        <div class="widget-content">
+                                            <ul class="user-links">
+                                                <li><a href="blog.html">Our Blog</a></li>
+                                                <li><a href="about.html">About Us</a></li>
+                                                <li><a href="contact.html">Contact Us</a></li>
+                                                <li><a href="services.html">Services</a></li>
+                                                <li><a href="index.html">Home</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 footer-column">
+                                    <div class="footer-widget links-widget">
+                                        <h4 class="widget-title">Social Connect</h4>
+                                        <ul class="footer-nav">
+                                            <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                            <li><a href="#"><i class="fa-solid fa-x"></i></a></li>
+                                            <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-bottom">
+                            <p class="copyright-text">© Copyright 2026. All Right by <a href="index.html">STACKLY</a></p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 right-column order-1 order-xl-2">
+                        <div class="inner-column">
+                            <h3 class="title">Ready to Breakthrough?</h3>
+                            <a class="circle-btn" href="services.html">Check Services <i class="fa-regular fa-arrow-up-right"></i></a>
+                            <div class="mt-10">
+                                <h5 class="time">09 : 00 AM - 06 : 00 PM</h5>
+                                <h5 class="date">Monday - Friday</h5>
+                            </div>
+                        </div>
+                        <div class="shape"><img src="images/shape/footer-one-shape.webp" alt="Image"></div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- End Page Wrapper -->
+
+    <script src="js/jquery.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/appear.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/nice-select.min.js"></script>
+    <script src="js/gsap.min.js"></script>
+    <script src="js/ScrollTrigger.min.js"></script>
+    <script src="js/splitting.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        (function() {
+            function dismissPreloader() {
+                var pre = document.querySelector('.preloader');
+                if (pre) {
+                    pre.style.transition = 'opacity 0.5s ease';
+                    pre.style.opacity = '0';
+                    setTimeout(function() { pre.style.display = 'none'; }, 600);
+                }
+            }
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(dismissPreloader, 500);
+            });
+            setTimeout(dismissPreloader, 2500);
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Blog - STACKLY BIO TECHNOLOGY</title>
+    <meta name="description" content="Stay updated with the latest breakthroughs in biotechnology, genomics, molecular research, and clinical science from STACKLY's expert team.">
+    <!-- Stylesheets -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/flatpickr.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
+    <link rel="shortcut icon" href="images/favicon.webp" type="image/x-icon">
+    <link rel="icon" href="images/favicon.webp" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            background: linear-gradient(135deg, #0b132b 0%, #0062FF 60%, #1b67f3 100%);
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('images/banner/banner-image2.webp') center/cover no-repeat;
+            opacity: 0.1;
+        }
+        .page-hero .breadcrumb-wrap { position: relative; z-index: 1; text-align: center; }
+        .page-hero h1 { font-size: clamp(36px,6vw,64px); font-weight: 800; color: #fff; margin-bottom: 16px; line-height: 1.15; }
+        .page-hero h1 span { color: #7eb3ff; }
+        .page-hero .breadcrumb-nav {
+            display: flex; align-items: center; justify-content: center;
+            gap: 10px; font-size: 15px; color: rgba(255,255,255,0.7);
+        }
+        .page-hero .breadcrumb-nav a { color: rgba(255,255,255,0.9); text-decoration: none; }
+        .page-hero .breadcrumb-nav a:hover { color: #fff; }
+        .page-hero .breadcrumb-nav .sep { color: rgba(255,255,255,0.4); }
+
+        /* ===== FEATURED POST ===== */
+        .featured-section { padding: 80px 0 0; background: #f8f9ff; }
+        .featured-post {
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+        }
+        .featured-post .feat-img {
+            width: 100%; height: 480px;
+            object-fit: cover;
+            display: block;
+            transition: transform 600ms ease;
+        }
+        .featured-post:hover .feat-img { transform: scale(1.03); }
+        .featured-post .feat-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(11,19,43,0.92) 0%, rgba(11,19,43,0.3) 50%, transparent 100%);
+        }
+        .featured-post .feat-content {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 40px 48px;
+        }
+        .feat-tag {
+            display: inline-block;
+            background: #0062FF;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 14px;
+        }
+        .featured-post h2 {
+            font-size: clamp(22px, 3vw, 36px);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+            line-height: 1.25;
+        }
+        .featured-post h2 a { color: inherit; text-decoration: none; }
+        .featured-post h2 a:hover { color: #7eb3ff; }
+        .post-meta {
+            display: flex; align-items: center; flex-wrap: wrap;
+            gap: 18px; font-size: 13px; color: rgba(255,255,255,0.7);
+        }
+        .post-meta span { display: flex; align-items: center; gap: 6px; }
+        .post-meta i { color: #0062FF; }
+        .feat-read-more {
+            display: inline-flex; align-items: center; gap: 8px;
+            margin-top: 20px;
+            background: #0062FF;
+            color: #fff;
+            font-size: 14px; font-weight: 700;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 300ms ease;
+        }
+        .feat-read-more:hover { background: #fff; color: #0062FF; gap: 14px; }
+
+        /* ===== BLOG GRID ===== */
+        .blog-section { padding: 80px 0 100px; background: #f8f9ff; }
+
+        /* Search bar */
+        .blog-search {
+            display: flex;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+            margin-bottom: 48px;
+        }
+        .blog-search input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 16px 24px;
+            font-size: 15px;
+            color: #333;
+            background: transparent;
+        }
+        .blog-search button {
+            background: #0062FF;
+            color: #fff;
+            border: none;
+            padding: 16px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 300ms ease;
+        }
+        .blog-search button:hover { background: #0a1f6e; }
+
+        /* Category Tabs */
+        .cat-tabs {
+            display: flex; flex-wrap: wrap; gap: 10px;
+            margin-bottom: 40px;
+        }
+        .cat-tab {
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            border: 2px solid #e0e3f0;
+            background: #fff;
+            color: #555;
+            transition: all 300ms ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .cat-tab:hover, .cat-tab.active {
+            background: #0062FF;
+            border-color: #0062FF;
+            color: #fff;
+        }
+
+        /* Blog Cards */
+        .blog-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+            transition: all 400ms ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card:hover { transform: translateY(-8px); box-shadow: 0 16px 48px rgba(0,98,255,0.15); }
+        .blog-card .card-img-wrap { overflow: hidden; position: relative; }
+        .blog-card .card-img-wrap img {
+            width: 100%; height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 500ms ease;
+        }
+        .blog-card:hover .card-img-wrap img { transform: scale(1.07); }
+        .blog-card .card-cat {
+            position: absolute;
+            top: 16px; left: 16px;
+            background: #0062FF;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        .blog-card .card-body-inner {
+            padding: 28px 28px 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .blog-card .card-meta {
+            display: flex; flex-wrap: wrap; gap: 14px;
+            font-size: 12px; color: #888;
+            margin-bottom: 14px;
+        }
+        .blog-card .card-meta span { display: flex; align-items: center; gap: 5px; }
+        .blog-card .card-meta i { color: #0062FF; }
+        .blog-card h4 {
+            font-size: 19px; font-weight: 700;
+            color: #0b132b;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .blog-card h4 a { color: inherit; text-decoration: none; }
+        .blog-card h4 a:hover { color: #0062FF; }
+        .blog-card p {
+            font-size: 14px; color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+        .blog-card .read-link {
+            display: inline-flex; align-items: center; gap: 7px;
+            font-size: 13px; font-weight: 700;
+            color: #0062FF; text-decoration: none;
+            border-top: 1px solid #f0f2f8;
+            padding-top: 18px;
+            transition: gap 300ms ease;
+        }
+        .blog-card:hover .read-link { gap: 14px; }
+
+        /* Sidebar */
+        .sidebar-widget {
+            background: #fff;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+            margin-bottom: 32px;
+        }
+        .sidebar-widget h5 {
+            font-size: 18px; font-weight: 800;
+            color: #0b132b;
+            margin-bottom: 24px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid #f0f2f8;
+            position: relative;
+        }
+        .sidebar-widget h5::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; left: 0;
+            width: 40px; height: 2px;
+            background: #0062FF;
+        }
+
+        /* Sidebar: categories */
+        .sidebar-cats { list-style: none; padding: 0; margin: 0; }
+        .sidebar-cats li {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f2f8;
+            font-size: 14px;
+        }
+        .sidebar-cats li:last-child { border-bottom: none; }
+        .sidebar-cats li a { color: #444; text-decoration: none; transition: color 300ms ease; }
+        .sidebar-cats li a:hover { color: #0062FF; }
+        .sidebar-cats li .count {
+            background: #f0f4ff; color: #0062FF;
+            font-size: 11px; font-weight: 700;
+            padding: 2px 10px; border-radius: 20px;
+        }
+
+        /* Sidebar: recent posts */
+        .recent-post { display: flex; gap: 14px; margin-bottom: 18px; }
+        .recent-post:last-child { margin-bottom: 0; }
+        .recent-post img {
+            width: 72px; height: 72px;
+            object-fit: cover;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+        .recent-post .rp-info h6 { font-size: 14px; font-weight: 700; color: #0b132b; margin-bottom: 4px; line-height: 1.4; }
+        .recent-post .rp-info h6 a { color: inherit; text-decoration: none; }
+        .recent-post .rp-info h6 a:hover { color: #0062FF; }
+        .recent-post .rp-info span { font-size: 12px; color: #888; }
+
+        /* Sidebar: tags */
+        .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag-cloud a {
+            padding: 6px 14px;
+            border: 2px solid #e8eaf0;
+            border-radius: 6px;
+            font-size: 12px; font-weight: 600;
+            color: #555; text-decoration: none;
+            transition: all 300ms ease;
+        }
+        .tag-cloud a:hover { border-color: #0062FF; background: #0062FF; color: #fff; }
+
+        /* Newsletter widget */
+        .nl-widget-input {
+            width: 100%;
+            border: 2px solid #e8eaf0;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 14px;
+            outline: none;
+            margin-bottom: 12px;
+            transition: border-color 300ms ease;
+        }
+        .nl-widget-input:focus { border-color: #0062FF; }
+        .nl-widget-btn {
+            width: 100%;
+            background: #0062FF;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 13px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 300ms ease;
+        }
+        .nl-widget-btn:hover { background: #0a1f6e; }
+
+        /* Pagination */
+        .blog-pagination-wrap {
+            display: flex; justify-content: center;
+            gap: 10px; margin-top: 60px; flex-wrap: wrap;
+        }
+        .pag-btn {
+            width: 44px; height: 44px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px; font-weight: 700;
+            background: #fff; color: #333;
+            border: 2px solid #e0e3f0;
+            text-decoration: none;
+            transition: all 300ms ease;
+        }
+        .pag-btn:hover, .pag-btn.active { background: #0062FF; border-color: #0062FF; color: #fff; }
+
+        /* ===== CTA ===== */
+        .cta-section { padding: 80px 0; background: linear-gradient(135deg, #f8f9ff 0%, #e8eeff 100%); }
+        .cta-box {
+            background: linear-gradient(135deg, #0b132b, #0062FF);
+            border-radius: 24px; padding: 60px;
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -80px; right: -80px;
+            width: 300px; height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+        }
+        .cta-box h2 { color: #fff; font-size: clamp(26px,4vw,42px); font-weight: 800; margin-bottom: 16px; }
+        .cta-box p { color: rgba(255,255,255,0.75); font-size: 16px; max-width: 600px; margin: 0 auto 36px; line-height: 1.8; }
+        .btn-cta-white {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: #fff; color: #0062FF;
+            font-weight: 700; font-size: 15px;
+            padding: 16px 36px; border-radius: 8px;
+            text-decoration: none; transition: all 300ms ease; margin: 6px;
+        }
+        .btn-cta-white:hover { background: #f0f4ff; transform: translateY(-2px); color: #0062FF; }
+        .btn-cta-outline {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: transparent; color: #fff;
+            font-weight: 700; font-size: 15px;
+            padding: 16px 36px; border-radius: 8px;
+            border: 2px solid rgba(255,255,255,0.4);
+            text-decoration: none; transition: all 300ms ease; margin: 6px;
+        }
+        .btn-cta-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); color: #fff; }
+
+        @media (max-width: 767.98px) {
+            .cta-box { padding: 40px 24px; }
+            .featured-post .feat-content { padding: 24px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+
+        <!-- Preloader -->
+        <div class="preloader">
+            <div class="preloader-content">
+                <div class="preloader-logo">STACKLY</div>
+                <div class="preloader-subtext">Initializing Systems...</div>
+            </div>
+        </div>
+
+        <!-- Main Header -->
+        <header class="main-header header-style-one">
+            <div class="main-box">
+                <div class="logo-box">
+                    <div class="logo"><a href="index.html"><img src="images/logo.webp" alt="" title="STACKLY"></a></div>
+                </div>
+                <div class="nav-outer">
+                    <nav class="nav main-menu">
+                        <ul class="navigation">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li class="current"><a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="outer-box">
+                    <div class="info-box">
+                        <div class="call-info">
+                            <i class="fa-solid fa-phone ring__animation"></i>
+                            <div>
+                                <h6 class="title">Phone:</h6>
+                                <a href="tel:+919876543210">+91 9876543210</a>
+                            </div>
+                        </div>
+                        <a class="btn-two" href="login.html">Login Now</a>
+                    </div>
+                    <div class="mobile-nav-toggler d-block d-lg-none"><i class="icon lnr-icon-bars"></i></div>
+                </div>
+            </div>
+            <div class="auto-container">
+                <div class="mobile-menu">
+                    <div class="menu-backdrop"></div>
+                    <nav class="menu-box">
+                        <div class="upper-box">
+                            <div class="nav-logo"><a href="index.html"><img src="images/logo-light.webp" alt=""></a></div>
+                            <div class="close-btn"><i class="icon fa fa-times"></i></div>
+                        </div>
+                        <ul class="navigation clearfix d-block d-lg-none"></ul>
+                        <ul class="social-links">
+                            <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="sticky-header">
+                    <div class="auto-container">
+                        <div class="inner-container">
+                            <div class="logo"><a href="index.html"><img src="images/logo.webp" alt=""></a></div>
+                            <div class="nav-outer">
+                                <nav class="main-menu">
+                                    <div class="navbar-collapse show collapse clearfix">
+                                        <ul class="navigation clearfix"></ul>
+                                    </div>
+                                </nav>
+                                <div class="mobile-nav-toggler"><span class="icon lnr-icon-bars"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- End Main Header -->
+
+        <!-- Page Hero -->
+        <section class="page-hero">
+            <div class="container">
+                <div class="breadcrumb-wrap">
+                    <h1>Our <span>Research</span> Blog</h1>
+                    <nav class="breadcrumb-nav">
+                        <a href="index.html">Home</a>
+                        <span class="sep"><i class="fa-solid fa-angle-right"></i></span>
+                        <span>Blog</span>
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Post -->
+        <section class="featured-section">
+            <div class="container">
+                <div class="featured-post wow fadeInUp" data-wow-delay="0ms" data-wow-duration="900ms">
+                    <img class="feat-img" src="images/banner/banner-image1.webp" alt="CRISPR Gene Editing">
+                    <div class="feat-overlay"></div>
+                    <div class="feat-content">
+                        <span class="feat-tag">Featured &mdash; Genomics</span>
+                        <h2><a href="#">CRISPR-Cas9 Gene Editing: How STACKLY's Latest Breakthrough is Rewriting the Future of Inherited Disease Treatment</a></h2>
+                        <div class="post-meta">
+                            <span><i class="fa-solid fa-user"></i> Dr. Priya Sharma</span>
+                            <span><i class="fa-regular fa-calendar"></i> March 10, 2026</span>
+                            <span><i class="fa-regular fa-clock"></i> 8 min read</span>
+                            <span><i class="fa-regular fa-comment"></i> 24 Comments</span>
+                        </div>
+                        <a href="#" class="feat-read-more">Read Full Article <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Grid + Sidebar -->
+        <section class="blog-section">
+            <div class="container">
+                <div class="row g-5">
+
+                    <!-- Main Blog Grid -->
+                    <div class="col-lg-8">
+
+                        <!-- Search -->
+                        <div class="blog-search wow fadeInUp" data-wow-delay="0ms">
+                            <input type="text" placeholder="Search articles, topics, researchers...">
+                            <button type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+
+                        <!-- Category Tabs -->
+                        <div class="cat-tabs wow fadeInUp" data-wow-delay="50ms">
+                            <a href="#" class="cat-tab active">All</a>
+                            <a href="#" class="cat-tab">Genomics</a>
+                            <a href="#" class="cat-tab">Clinical Trials</a>
+                            <a href="#" class="cat-tab">Bioinformatics</a>
+                            <a href="#" class="cat-tab">CRISPR</a>
+                            <a href="#" class="cat-tab">Drug Discovery</a>
+                            <a href="#" class="cat-tab">Agriculture</a>
+                        </div>
+
+                        <!-- Blog Cards -->
+                        <div class="row g-4">
+
+                            <!-- Post 1 -->
+                            <div class="col-md-6 wow fadeInUp" data-wow-delay="0ms" data-wow-duration="800ms">
+                                <div class="blog-card">
+                                    <div class="card-img-wrap">
+                                        <img src="images/about/about-image1.webp" alt="Next-Gen Sequencing">
+                                        <span class="card-cat">Genomics</span>
+                                    </div>
+                                    <div class="card-body-inner">
+                                        <div class="card-meta">
+                                            <span><i class="fa-regular fa-calendar"></i> March 5, 2026</span>
+                                            <span><i class="fa-regular fa-clock"></i> 6 min read</span>
+                                        </div>
+                                        <h4><a href="#">Next-Generation Sequencing: A Complete Guide to Understanding Your Genome</a></h4>
+                                        <p>Discover how NGS technology is allowing scientists to read billions of DNA base pairs in days — and what it means for personalised medicine.</p>
+                                        <a href="#" class="read-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Post 2 -->
+                            <div class="col-md-6 wow fadeInUp" data-wow-delay="100ms" data-wow-duration="800ms">
+                                <div class="blog-card">
+                                    <div class="card-img-wrap">
+                                        <img src="images/about/about-image2.webp" alt="AI in Drug Discovery">
+                                        <span class="card-cat">Drug Discovery</span>
+                                    </div>
+                                    <div class="card-body-inner">
+                                        <div class="card-meta">
+                                            <span><i class="fa-regular fa-calendar"></i> Feb 28, 2026</span>
+                                            <span><i class="fa-regular fa-clock"></i> 5 min read</span>
+                                        </div>
+                                        <h4><a href="#">How Artificial Intelligence is Cutting Drug Discovery Timelines from 15 Years to 4</a></h4>
+                                        <p>AI-powered molecular modelling and predictive analytics are fundamentally transforming the pharmaceutical pipeline from target identification to IND filing.</p>
+                                        <a href="#" class="read-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Post 3 -->
+                            <div class="col-md-6 wow fadeInUp" data-wow-delay="0ms" data-wow-duration="800ms">
+                                <div class="blog-card">
+                                    <div class="card-img-wrap">
+                                        <img src="images/strategy/strategy-image.webp" alt="Clinical Trials">
+                                        <span class="card-cat">Clinical Trials</span>
+                                    </div>
+                                    <div class="card-body-inner">
+                                        <div class="card-meta">
+                                            <span><i class="fa-regular fa-calendar"></i> Feb 20, 2026</span>
+                                            <span><i class="fa-regular fa-clock"></i> 7 min read</span>
+                                        </div>
+                                        <h4><a href="#">Decentralised Clinical Trials: The Future of Patient-Centric Research</a></h4>
+                                        <p>Remote monitoring, wearable sensors, and telehealth are enabling trials to reach diverse populations and dramatically reduce dropout rates.</p>
+                                        <a href="#" class="read-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Post 4 -->
+                            <div class="col-md-6 wow fadeInUp" data-wow-delay="100ms" data-wow-duration="800ms">
+                                <div class="blog-card">
+                                    <div class="card-img-wrap">
+                                        <img src="images/banner/banner-image2.webp" alt="Bioinformatics">
+                                        <span class="card-cat">Bioinformatics</span>
+                                    </div>
+                                    <div class="card-body-inner">
+                                        <div class="card-meta">
+                                            <span><i class="fa-regular fa-calendar"></i> Feb 14, 2026</span>
+                                            <span><i class="fa-regular fa-clock"></i> 9 min read</span>
+                                        </div>
+                                        <h4><a href="#">Multi-Omics Integration: Connecting Genomics, Proteomics, and Metabolomics Data</a></h4>
+                                        <p>A deep dive into how integrating multiple omics layers is revealing holistic biological insights that single-modality studies simply cannot provide.</p>
+                                        <a href="#" class="read-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Post 5 -->
+                            <div class="col-md-6 wow fadeInUp" data-wow-delay="0ms" data-wow-duration="800ms">
+                                <div class="blog-card">
+                                    <div class="card-img-wrap">
+                                        <img src="images/faq/faq-image.webp" alt="Regenerative Medicine">
+                                        <span class="card-cat">Regenerative Medicine</span>
+                                    </div>
+                                    <div class="card-body-inner">
+                                        <div class="card-meta">
+                                            <span><i class="fa-regular fa-calendar"></i> Feb 7, 2026</span>
+                                            <span><i class="fa-regular fa-clock"></i> 6 min read</span>
+                                        </div>
+                                        <h4><a href="#">Stem Cell Therapies in 2026: Promises, Progress, and What Patients Need to Know</a></h4>
+                                        <p>From cardiac repair to spinal cord injuries, stem cell research is moving from experimental to established clinical practice faster than ever before.</p>
+                                        <a href="#" class="read-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Post 6 -->
+                            <div class="col-md-6 wow fadeInUp" data-wow-delay="100ms" data-wow-duration="800ms">
+                                <div class="blog-card">
+                                    <div class="card-img-wrap">
+                                        <img src="images/about/about-image1.webp" alt="Agriculture Biotech">
+                                        <span class="card-cat">Agriculture</span>
+                                    </div>
+                                    <div class="card-body-inner">
+                                        <div class="card-meta">
+                                            <span><i class="fa-regular fa-calendar"></i> Jan 28, 2026</span>
+                                            <span><i class="fa-regular fa-clock"></i> 5 min read</span>
+                                        </div>
+                                        <h4><a href="#">Gene-Edited Crops: How Agricultural Biotech is Answering the Global Food Security Crisis</a></h4>
+                                        <p>CRISPR-edited drought-resistant and high-yield varieties are now entering regulatory approval, promising food abundance for 10 billion people by 2050.</p>
+                                        <a href="#" class="read-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- End Blog Cards -->
+
+                        <!-- Pagination -->
+                        <div class="blog-pagination-wrap">
+                            <a href="#" class="pag-btn active">1</a>
+                            <a href="#" class="pag-btn">2</a>
+                            <a href="#" class="pag-btn">3</a>
+                            <span class="pag-btn" style="border:none; background:none; color:#888;">...</span>
+                            <a href="#" class="pag-btn">8</a>
+                            <a href="#" class="pag-btn"><i class="fa-solid fa-angle-right"></i></a>
+                        </div>
+
+                    </div>
+                    <!-- End Main Blog Grid -->
+
+                    <!-- Sidebar -->
+                    <div class="col-lg-4">
+
+                        <!-- About Widget -->
+                        <div class="sidebar-widget wow fadeInRight" data-wow-delay="0ms">
+                            <h5>About STACKLY Blog</h5>
+                            <p style="font-size:14px; color:#666; line-height:1.8; margin-bottom:20px;">
+                                Stay at the frontier of biotechnology. Our experts share the latest research, clinical insights, and scientific breakthroughs every week.
+                            </p>
+                            <a href="about.html" class="feat-read-more" style="display:inline-flex;">Learn About Us <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+
+                        <!-- Category Widget -->
+                        <div class="sidebar-widget wow fadeInRight" data-wow-delay="100ms">
+                            <h5>Categories</h5>
+                            <ul class="sidebar-cats">
+                                <li><a href="#">Genomics</a><span class="count">14</span></li>
+                                <li><a href="#">Clinical Trials</a><span class="count">9</span></li>
+                                <li><a href="#">Bioinformatics</a><span class="count">11</span></li>
+                                <li><a href="#">CRISPR Technology</a><span class="count">7</span></li>
+                                <li><a href="#">Drug Discovery</a><span class="count">12</span></li>
+                                <li><a href="#">Regenerative Medicine</a><span class="count">6</span></li>
+                                <li><a href="#">Agricultural Biotech</a><span class="count">5</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- Recent Posts Widget -->
+                        <div class="sidebar-widget wow fadeInRight" data-wow-delay="150ms">
+                            <h5>Recent Posts</h5>
+                            <div class="recent-post">
+                                <img src="images/about/about-image1.webp" alt="Post">
+                                <div class="rp-info">
+                                    <h6><a href="#">CRISPR Breakthrough: Correcting Sickle Cell Disease at the Genetic Level</a></h6>
+                                    <span><i class="fa-regular fa-calendar"></i> March 12, 2026</span>
+                                </div>
+                            </div>
+                            <div class="recent-post">
+                                <img src="images/about/about-image2.webp" alt="Post">
+                                <div class="rp-info">
+                                    <h6><a href="#">The Microbiome Revolution: How Gut Bacteria Influence Mental Health</a></h6>
+                                    <span><i class="fa-regular fa-calendar"></i> March 8, 2026</span>
+                                </div>
+                            </div>
+                            <div class="recent-post">
+                                <img src="images/faq/faq-image.webp" alt="Post">
+                                <div class="rp-info">
+                                    <h6><a href="#">Liquid Biopsies: Detecting Cancer from a Single Blood Draw</a></h6>
+                                    <span><i class="fa-regular fa-calendar"></i> March 1, 2026</span>
+                                </div>
+                            </div>
+                            <div class="recent-post">
+                                <img src="images/strategy/strategy-image.webp" alt="Post">
+                                <div class="rp-info">
+                                    <h6><a href="#">Protein Folding AI: Unlocking the Final Frontier of Molecular Biology</a></h6>
+                                    <span><i class="fa-regular fa-calendar"></i> Feb 24, 2026</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tags Widget -->
+                        <div class="sidebar-widget wow fadeInRight" data-wow-delay="200ms">
+                            <h5>Popular Tags</h5>
+                            <div class="tag-cloud">
+                                <a href="#">CRISPR</a>
+                                <a href="#">Genomics</a>
+                                <a href="#">DNA</a>
+                                <a href="#">Proteomics</a>
+                                <a href="#">AI in Bio</a>
+                                <a href="#">Clinical Trials</a>
+                                <a href="#">Stem Cells</a>
+                                <a href="#">mRNA</a>
+                                <a href="#">Bioinformatics</a>
+                                <a href="#">Drug Dev</a>
+                                <a href="#">Epigenetics</a>
+                                <a href="#">Oncology</a>
+                            </div>
+                        </div>
+
+                        <!-- Newsletter Widget -->
+                        <div class="sidebar-widget wow fadeInRight" data-wow-delay="250ms" style="background: linear-gradient(135deg, #0b132b, #0062FF);">
+                            <h5 style="color:#fff; border-bottom-color: rgba(255,255,255,0.2);">Weekly Research Digest</h5>
+                            <p style="font-size:14px; color:rgba(255,255,255,0.75); line-height:1.8; margin-bottom:20px;">Get the latest biotech breakthroughs delivered to your inbox every Monday morning.</p>
+                            <input class="nl-widget-input" type="email" placeholder="Your email address">
+                            <button class="nl-widget-btn" style="background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.3);">
+                                Subscribe Now <i class="fa-solid fa-paper-plane ms-2"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                    <!-- End Sidebar -->
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="800ms">
+                    <h2>Have a Research Topic to Discuss?</h2>
+                    <p>Our scientists are happy to collaborate on publications, provide expert commentary, or discuss partnership opportunities in biotech research.</p>
+                    <div>
+                        <a href="contact.html" class="btn-cta-white"><i class="fa-solid fa-envelope"></i> Contact Our Team</a>
+                        <a href="services.html" class="btn-cta-outline"><i class="fa-solid fa-flask"></i> View Our Services</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="main-footer footer-style-one">
+            <div class="outer-box">
+                <div class="footer-left">
+                    <div class="logo"><a href="index.html"><img src="images/logo-light.webp" alt="Logo"></a></div>
+                    <button class="back-top-btn scroll-to-top">
+                        <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="1.5" cy="1.5" r="1.5" fill="white"/>
+                            <circle cx="1.5" cy="9.5" r="1.5" fill="white"/>
+                            <circle cx="1.5" cy="17.5" r="1.5" fill="white"/>
+                            <circle cx="9.5" cy="1.5" r="1.5" fill="white"/>
+                            <circle cx="9.5" cy="9.5" r="1.5" fill="white"/>
+                            <circle cx="9.5" cy="17.5" r="1.5" fill="white"/>
+                            <circle cx="17.5" cy="1.5" r="1.5" fill="white"/>
+                            <circle cx="17.5" cy="9.5" r="1.5" fill="white"/>
+                            <circle cx="17.5" cy="17.5" r="1.5" fill="white"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="row g-0 w-100">
+                    <div class="col-xl-8 left-column order-2 order-xl-1">
+                        <div class="footer-top">
+                            <div class="row g-4">
+                                <div class="col-lg-4">
+                                    <div class="info-item">
+                                        <ul>
+                                            <li><i class="fa-sharp fa-solid fa-phone"></i></li>
+                                            <li><span>Call Us:</span><h5 class="title">+91 9876543210</h5></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="info-item">
+                                        <ul>
+                                            <li><i class="fa-sharp fa-solid fa-envelope"></i></li>
+                                            <li><span>Email Us:</span><h5 class="title">info@stackly.com</h5></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="info-item">
+                                        <ul>
+                                            <li><i class="fa-sharp fa-solid fa-location-dot"></i></li>
+                                            <li><span>Hours:</span><h5 class="title">Daily: 8 AM to 5 PM</h5></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widgets-section">
+                            <div class="row g-4">
+                                <div class="col-lg-4 footer-column">
+                                    <div class="footer-widget links-widget">
+                                        <h4 class="widget-title">Services</h4>
+                                        <div class="widget-content">
+                                            <ul class="user-links">
+                                                <li><a href="services.html">Genomic Sequencing</a></li>
+                                                <li><a href="services.html">Bioinformatics</a></li>
+                                                <li><a href="services.html">Molecular Research</a></li>
+                                                <li><a href="services.html">Clinical Trials</a></li>
+                                                <li><a href="services.html">Drug Discovery</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 footer-column">
+                                    <div class="footer-widget links-widget">
+                                        <h4 class="widget-title">Pages</h4>
+                                        <div class="widget-content">
+                                            <ul class="user-links">
+                                                <li><a href="blog.html">Our Blog</a></li>
+                                                <li><a href="about.html">About Us</a></li>
+                                                <li><a href="contact.html">Contact Us</a></li>
+                                                <li><a href="services.html">Services</a></li>
+                                                <li><a href="index.html">Home</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 footer-column">
+                                    <div class="footer-widget links-widget">
+                                        <h4 class="widget-title">Signup Newsletter</h4>
+                                        <div class="input-feild">
+                                            <input type="text" placeholder="Email Address">
+                                            <a class="btn-one-rounded" href="contact.html">Sign up now <i class="fa-regular fa-angle-right"></i></a>
+                                        </div>
+                                        <ul class="footer-nav">
+                                            <li><a href="https://facebook.com"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                            <li><a href="https://twitter.com"><i class="fa-solid fa-x"></i></a></li>
+                                            <li><a href="https://vimeo.com"><i class="fa-brands fa-vimeo-v"></i></a></li>
+                                            <li><a href="https://pinterest.com"><i class="fa-brands fa-pinterest-p"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-bottom">
+                            <p class="copyright-text">© Copyright 2026. All Right by <a href="index.html">STACKLY</a></p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 right-column order-1 order-xl-2">
+                        <div class="inner-column">
+                            <h3 class="title">Have a Research Proposal?</h3>
+                            <a class="circle-btn" href="contact.html">Contact Us <i class="fa-regular fa-arrow-up-right"></i></a>
+                            <div class="mt-10">
+                                <h5 class="time">09 : 00 AM - 10 : 30 PM</h5>
+                                <h5 class="date">Saturday - Thursday</h5>
+                            </div>
+                        </div>
+                        <div class="shape"><img src="images/shape/footer-one-shape.webp" alt="Image"></div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer -->
+
+    </div>
+    <!-- End Page Wrapper -->
+    <script src="js/jquery.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/appear.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/nice-select.min.js"></script>
+    <script src="js/gsap.min.js"></script>
+    <script src="js/ScrollTrigger.min.js"></script>
+    <script src="js/splitting.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Fallback: force dismiss preloader if script.js errors prevent window.load from firing
+        (function() {
+            function dismissPreloader() {
+                var pre = document.querySelector('.preloader');
+                if (pre) {
+                    pre.style.transition = 'opacity 0.5s ease';
+                    pre.style.opacity = '0';
+                    setTimeout(function() { pre.style.display = 'none'; }, 600);
+                }
+            }
+            // Try on DOM ready
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(dismissPreloader, 500);
+            });
+            // Hard fallback after 2.5 seconds regardless
+            setTimeout(dismissPreloader, 2500);
+        })();
+    </script>
+</body>
+
+</html>

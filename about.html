@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>About Us - STACKLY BIO TECHNOLOGY</title>
+    <meta name="description" content="Learn about STACKLY's mission, vision, expert team, and our journey to become a global leader in biotechnology research and innovation.">
+    <!-- Stylesheets -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/flatpickr.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
+
+    <link rel="shortcut icon" href="images/favicon.webp" type="image/x-icon">
+    <link rel="icon" href="images/favicon.webp" type="image/x-icon">
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            background: linear-gradient(135deg, #0b132b 0%, #0062FF 60%, #1b67f3 100%);
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('images/about/about-image1.webp') center/cover no-repeat;
+            opacity: 0.12;
+        }
+        .page-hero .breadcrumb-wrap {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+            line-height: 1.15;
+        }
+        .page-hero h1 span { color: #7eb3ff; }
+        .page-hero .breadcrumb-nav {
+            display: flex; align-items: center; justify-content: center;
+            gap: 10px; font-size: 15px; color: rgba(255,255,255,0.7);
+        }
+        .page-hero .breadcrumb-nav a { color: rgba(255,255,255,0.9); text-decoration: none; }
+        .page-hero .breadcrumb-nav a:hover { color: #fff; }
+        .page-hero .breadcrumb-nav .sep { color: rgba(255,255,255,0.4); }
+
+        /* ===== SHARED LABELS ===== */
+        .sec-label {
+            display: inline-block;
+            background: rgba(0,98,255,0.1);
+            color: #0062FF;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 30px;
+            margin-bottom: 16px;
+        }
+        .sec-heading {
+            font-size: clamp(28px, 4vw, 46px);
+            font-weight: 800;
+            color: #0b132b;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        /* ===== ABOUT INTRO ===== */
+        .about-intro { padding: 100px 0; background: #fff; }
+        .about-intro .image-wrap {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .about-intro .image-wrap img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            display: block;
+        }
+        .about-intro .exp-badge {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            background: #0062FF;
+            color: #fff;
+            border-radius: 16px;
+            padding: 20px 28px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0,98,255,0.4);
+        }
+        .about-intro .exp-badge .num {
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1;
+        }
+        .about-intro .exp-badge .txt {
+            font-size: 13px;
+            font-weight: 600;
+            opacity: 0.85;
+            margin-top: 4px;
+        }
+        .about-intro .check-list { list-style: none; padding: 0; margin: 24px 0 32px; }
+        .about-intro .check-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 15px;
+            color: #444;
+            margin-bottom: 14px;
+        }
+        .about-intro .check-list li i { color: #0062FF; font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+
+        /* ===== MISSION / VISION ===== */
+        .mission-section { padding: 100px 0; background: #f8f9ff; }
+        .mv-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 48px 36px;
+            height: 100%;
+            border-bottom: 4px solid transparent;
+            transition: all 400ms ease;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+        }
+        .mv-card:hover { border-bottom-color: #0062FF; transform: translateY(-6px); }
+        .mv-card .mv-icon {
+            width: 72px; height: 72px;
+            background: linear-gradient(135deg, #0062FF, #1b67f3);
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 30px; color: #fff;
+            margin-bottom: 28px;
+            transition: border-radius 400ms ease;
+        }
+        .mv-card:hover .mv-icon { border-radius: 50%; }
+        .mv-card h4 { font-size: 24px; font-weight: 800; color: #0b132b; margin-bottom: 16px; }
+        .mv-card p { font-size: 15px; color: #666; line-height: 1.8; margin: 0; }
+
+        /* ===== MILESTONES ===== */
+        .milestone-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #0b132b 0%, #0a1f6e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .milestone-section::before {
+            content: '';
+            position: absolute;
+            top: -100px; right: -100px;
+            width: 500px; height: 500px;
+            border-radius: 50%;
+            background: rgba(0,98,255,0.08);
+        }
+        .milestone-section .sec-label { color: #7eb3ff; background: rgba(126,179,255,0.12); }
+        .milestone-section .sec-heading { color: #fff; }
+        .timeline {
+            position: relative;
+            padding: 16px 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0; bottom: 0;
+            width: 2px;
+            background: rgba(0,98,255,0.3);
+            transform: translateX(-50%);
+        }
+        .tl-item {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 48px;
+            position: relative;
+        }
+        .tl-item:nth-child(odd) { flex-direction: row; }
+        .tl-item:nth-child(even) { flex-direction: row-reverse; }
+        .tl-content {
+            flex: 1;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 28px 32px;
+            transition: all 300ms ease;
+        }
+        .tl-content:hover {
+            background: rgba(0,98,255,0.15);
+            border-color: rgba(0,98,255,0.35);
+        }
+        .tl-content .year {
+            display: inline-block;
+            background: #0062FF;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+        .tl-content h5 { color: #fff; font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+        .tl-content p { color: rgba(255,255,255,0.65); font-size: 14px; line-height: 1.7; margin: 0; }
+        .tl-dot {
+            flex: 0 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .tl-dot::after {
+            content: '';
+            width: 20px; height: 20px;
+            border-radius: 50%;
+            background: #0062FF;
+            border: 4px solid #fff;
+            box-shadow: 0 0 0 4px rgba(0,98,255,0.3);
+        }
+
+        /* ===== TEAM SECTION ===== */
+        .team-section { padding: 100px 0; background: #fff; }
+        .team-card {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            transition: transform 400ms ease;
+        }
+        .team-card:hover { transform: translateY(-8px); }
+        .team-card .team-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            filter: grayscale(20%);
+            transition: filter 400ms ease;
+        }
+        .team-card:hover .team-img { filter: grayscale(0%); }
+        .team-card .team-info {
+            background: #fff;
+            padding: 24px 28px;
+        }
+        .team-card .team-info h5 { font-size: 18px; font-weight: 700; color: #0b132b; margin-bottom: 4px; }
+        .team-card .team-info span { font-size: 13px; color: #0062FF; font-weight: 600; letter-spacing: 1px; }
+        .team-card .social-overlay {
+            position: absolute;
+            top: 16px; right: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 400ms ease;
+        }
+        .team-card:hover .social-overlay { opacity: 1; transform: translateX(0); }
+        .team-card .social-overlay a {
+            width: 36px; height: 36px;
+            background: #0062FF;
+            color: #fff;
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px;
+            text-decoration: none;
+            transition: background 300ms ease;
+        }
+        .team-card .social-overlay a:hover { background: #0b132b; }
+
+        /* ===== VALUES ===== */
+        .values-section { padding: 100px 0; background: #f8f9ff; }
+        .value-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            padding: 28px;
+            background: #fff;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            transition: all 300ms ease;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+        }
+        .value-item:hover { transform: translateX(8px); box-shadow: 0 8px 32px rgba(0,98,255,0.12); }
+        .value-item .v-icon {
+            min-width: 56px; height: 56px;
+            background: linear-gradient(135deg, #0062FF, #1b67f3);
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; color: #fff;
+        }
+        .value-item h5 { font-size: 17px; font-weight: 700; color: #0b132b; margin-bottom: 6px; }
+        .value-item p { font-size: 14px; color: #666; line-height: 1.7; margin: 0; }
+
+        /* ===== CTA ===== */
+        .cta-section { padding: 80px 0; background: linear-gradient(135deg, #f8f9ff 0%, #e8eeff 100%); }
+        .cta-box {
+            background: linear-gradient(135deg, #0b132b, #0062FF);
+            border-radius: 24px;
+            padding: 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -80px; right: -80px;
+            width: 300px; height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+        }
+        .cta-box h2 { color: #fff; font-size: clamp(26px, 4vw, 42px); font-weight: 800; margin-bottom: 16px; }
+        .cta-box p { color: rgba(255,255,255,0.75); font-size: 16px; max-width: 600px; margin: 0 auto 36px; line-height: 1.8; }
+        .btn-cta-white {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: #fff; color: #0062FF;
+            font-weight: 700; font-size: 15px;
+            padding: 16px 36px; border-radius: 8px;
+            text-decoration: none; transition: all 300ms ease; margin: 6px;
+        }
+        .btn-cta-white:hover { background: #f0f4ff; transform: translateY(-2px); color: #0062FF; }
+        .btn-cta-outline {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: transparent; color: #fff;
+            font-weight: 700; font-size: 15px;
+            padding: 16px 36px; border-radius: 8px; border: 2px solid rgba(255,255,255,0.4);
+            text-decoration: none; transition: all 300ms ease; margin: 6px;
+        }
+        .btn-cta-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); color: #fff; }
+
+        @media (max-width: 767.98px) {
+            .timeline::before { display: none; }
+            .tl-item, .tl-item:nth-child(even) { flex-direction: column; gap: 16px; }
+            .tl-dot { display: none; }
+            .cta-box { padding: 40px 24px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+
+        <!-- Preloader -->
+        <div class="preloader">
+            <div class="preloader-content">
+                <div class="preloader-logo">STACKLY</div>
+                <div class="preloader-subtext">Initializing Systems...</div>
+            </div>
+        </div>
+
+        <!-- Main Header -->
+        <header class="main-header header-style-one">
+            <div class="main-box">
+                <div class="logo-box">
+                    <div class="logo"><a href="index.html"><img src="images/logo.webp" alt="" title="STACKLY"></a></div>
+                </div>
+                <div class="nav-outer">
+                    <nav class="nav main-menu">
+                        <ul class="navigation">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li class="current"><a href="about.html">About</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="outer-box">
+                    <div class="info-box">
+                        <div class="call-info">
+                            <i class="fa-solid fa-phone ring__animation"></i>
+                            <div>
+                                <h6 class="title">Phone:</h6>
+                                <a href="tel:+919876543210">+91 9876543210</a>
+                            </div>
+                        </div>
+                        <a class="btn-two" href="login.html">Sign In</a>
+                    </div>
+                    <div class="mobile-nav-toggler d-block d-lg-none"><i class="icon lnr-icon-bars"></i></div>
+                </div>
+            </div>
+            <div class="auto-container">
+                <div class="mobile-menu">
+                    <div class="menu-backdrop"></div>
+                    <nav class="menu-box">
+                        <div class="upper-box">
+                            <div class="nav-logo"><a href="index.html"><img src="images/logo-light.webp" alt=""></a></div>
+                            <div class="close-btn"><i class="icon fa fa-times"></i></div>
+                        </div>
+                        <ul class="navigation clearfix d-block d-lg-none"></ul>
+                        <ul class="social-links">
+                            <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="sticky-header">
+                    <div class="auto-container">
+                        <div class="inner-container">
+                            <div class="logo">
+                                <a href="index.html"><img src="images/logo.webp" alt=""></a>
+                            </div>
+                            <div class="nav-outer">
+                                <nav class="main-menu">
+                                    <div class="navbar-collapse show collapse clearfix">
+                                        <ul class="navigation clearfix"></ul>
+                                    </div>
+                                </nav>
+                                <div class="mobile-nav-toggler"><span class="icon lnr-icon-bars"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- End Main Header -->
+
+        <!-- Page Hero -->
+        <section class="page-hero">
+            <div class="container">
+                <div class="breadcrumb-wrap">
+                    <h1>About <span>STACKLY</span></h1>
+                    <nav class="breadcrumb-nav">
+                        <a href="index.html">Home</a>
+                        <span class="sep"><i class="fa-solid fa-angle-right"></i></span>
+                        <span>About Us</span>
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Intro -->
+        <section class="about-intro">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="900ms">
+                        <div class="image-wrap">
+                            <img src="images/about/about-image1.webp" alt="STACKLY Laboratory">
+                            <div class="exp-badge">
+                                <div class="num">15+</div>
+                                <div class="txt">Years of Research<br>Excellence</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 wow fadeInRight" data-wow-delay="100ms" data-wow-duration="900ms">
+                        <span class="sec-label">Who We Are</span>
+                        <h2 class="sec-heading">Advancing Life Sciences for a Better World</h2>
+                        <p style="color: #666; font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
+                            STACKLY is a pioneering biotechnology company at the forefront of genomic research, molecular medicine, and clinical innovation. Founded with a singular vision — to decode the complexities of life and translate scientific discovery into real-world health solutions.
+                        </p>
+                        <p style="color: #666; font-size: 16px; line-height: 1.8; margin-bottom: 28px;">
+                            With laboratories spanning four continents and a team of over 300 world-class scientists, we partner with hospitals, pharmaceutical companies, and research institutions to accelerate breakthroughs that matter.
+                        </p>
+                        <ul class="check-list">
+                            <li><i class="fa-solid fa-circle-check"></i> ISO 17025 Certified Laboratory Standards</li>
+                            <li><i class="fa-solid fa-circle-check"></i> FDA & EMA Regulatory Compliance Expertise</li>
+                            <li><i class="fa-solid fa-circle-check"></i> AI-powered genomics analysis platform</li>
+                            <li><i class="fa-solid fa-circle-check"></i> 250+ published peer-reviewed research papers</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Partnerships with 40+ global health institutions</li>
+                        </ul>
+                        <a href="contact.html" class="btn-one">Partner With Us <i class="fa-solid fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission / Vision / Values Cards -->
+        <section class="mission-section">
+            <div class="container">
+                <div class="text-center mb-60">
+                    <span class="sec-label">Our Foundation</span>
+                    <h2 class="sec-heading">What Drives Us Forward</h2>
+                    <p style="color: #666; max-width: 600px; margin: 0 auto; font-size: 16px; line-height: 1.8;">Every discovery, every trial, every breakthrough is guided by our core pillars of purpose.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4 wow fadeInUp" data-wow-delay="0ms" data-wow-duration="800ms">
+                        <div class="mv-card">
+                            <div class="mv-icon"><i class="fa-solid fa-bullseye"></i></div>
+                            <h4>Our Mission</h4>
+                            <p>To accelerate the discovery and delivery of transformative biomedical solutions that improve human health and quality of life — from lab bench to bedside — with integrity, precision, and compassion.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 wow fadeInUp" data-wow-delay="150ms" data-wow-duration="800ms">
+                        <div class="mv-card">
+                            <div class="mv-icon"><i class="fa-solid fa-eye"></i></div>
+                            <h4>Our Vision</h4>
+                            <p>To be the world's most trusted partner in life sciences innovation — a place where bold scientific ideas are nurtured into global health solutions that redefine the boundaries of medicine and biology.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="800ms">
+                        <div class="mv-card">
+                            <div class="mv-icon"><i class="fa-solid fa-star"></i></div>
+                            <h4>Our Promise</h4>
+                            <p>We commit to the highest standards of scientific excellence, ethical research, and transparent partnerships. Every project we undertake receives the full weight of our expertise, technology, and dedication.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Milestones / Timeline -->
+        <section class="milestone-section">
+            <div class="container">
+                <div class="text-center mb-60">
+                    <span class="sec-label">Our Journey</span>
+                    <h2 class="sec-heading">Key Milestones in Our Story</h2>
+                    <p style="color: rgba(255,255,255,0.65); max-width: 600px; margin: 0 auto; font-size: 16px; line-height: 1.8;">From a small research lab to a global biotech leader — here's how it happened.</p>
+                </div>
+                <div class="timeline">
+                    <div class="tl-item wow fadeInLeft" data-wow-delay="0ms">
+                        <div class="tl-content">
+                            <span class="year">2009</span>
+                            <h5>Company Founded</h5>
+                            <p>STACKLY was established with a team of 12 scientists and a shared dream: to bring genomic medicine to the mainstream. Our first lab opened in Bangalore, India.</p>
+                        </div>
+                        <div class="tl-dot"></div>
+                        <div style="flex:1"></div>
+                    </div>
+                    <div class="tl-item wow fadeInRight" data-wow-delay="0ms">
+                        <div style="flex:1"></div>
+                        <div class="tl-dot"></div>
+                        <div class="tl-content">
+                            <span class="year">2012</span>
+                            <h5>First Clinical Partnership</h5>
+                            <p>Signed our first major partnership with a leading oncology hospital to conduct Phase II genomic trials across 500 patients — producing landmark data on targeted therapy response rates.</p>
+                        </div>
+                    </div>
+                    <div class="tl-item wow fadeInLeft" data-wow-delay="0ms">
+                        <div class="tl-content">
+                            <span class="year">2015</span>
+                            <h5>AI Platform Launch</h5>
+                            <p>Launched our proprietary AI-powered genomics analysis platform, reducing sequence analysis time from 72 hours to under 4 hours — a 18x improvement in throughput.</p>
+                        </div>
+                        <div class="tl-dot"></div>
+                        <div style="flex:1"></div>
+                    </div>
+                    <div class="tl-item wow fadeInRight" data-wow-delay="0ms">
+                        <div style="flex:1"></div>
+                        <div class="tl-dot"></div>
+                        <div class="tl-content">
+                            <span class="year">2018</span>
+                            <h5>Global Expansion</h5>
+                            <p>Opened research centres in the USA, Germany, and Singapore. Achieved ISO 17025 certification and began serving pharmaceutical clients across 25+ countries.</p>
+                        </div>
+                    </div>
+                    <div class="tl-item wow fadeInLeft" data-wow-delay="0ms">
+                        <div class="tl-content">
+                            <span class="year">2021</span>
+                            <h5>CRISPR Breakthrough</h5>
+                            <p>Published landmark research on CRISPR-based gene correction for inherited metabolic disorders — cited by Nature Medicine as one of the top 10 biomedical breakthroughs of the year.</p>
+                        </div>
+                        <div class="tl-dot"></div>
+                        <div style="flex:1"></div>
+                    </div>
+                    <div class="tl-item wow fadeInRight" data-wow-delay="0ms">
+                        <div style="flex:1"></div>
+                        <div class="tl-dot"></div>
+                        <div class="tl-content">
+                            <span class="year">2024</span>
+                            <h5>250+ Projects Milestone</h5>
+                            <p>Surpassed 250 active research projects globally, with a 95% clinical success rate. Named among the Top 20 Biotech Companies to Watch by BioTech World magazine.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section">
+            <div class="container">
+                <div class="text-center mb-60">
+                    <span class="sec-label">Meet the Experts</span>
+                    <h2 class="sec-heading">The Science Behind STACKLY</h2>
+                    <p style="color: #666; max-width: 580px; margin: 0 auto; font-size: 16px; line-height: 1.8;">Our leadership team brings together world-class expertise across genomics, molecular biology, AI, and clinical research.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay="0ms" data-wow-duration="800ms">
+                        <div class="team-card">
+                            <img class="team-img" src="images/team/team-image1.webp" alt="Dr. Arjun Mehta">
+                            <div class="social-overlay">
+                                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                            </div>
+                            <div class="team-info">
+                                <h5>Dr. Arjun Mehta</h5>
+                                <span>Chief Executive Officer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay="100ms" data-wow-duration="800ms">
+                        <div class="team-card">
+                            <img class="team-img" src="images/team/team-image2.webp" alt="Dr. Priya Sharma">
+                            <div class="social-overlay">
+                                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                            </div>
+                            <div class="team-info">
+                                <h5>Dr. Priya Sharma</h5>
+                                <span>Chief Scientific Officer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay="200ms" data-wow-duration="800ms">
+                        <div class="team-card">
+                            <img class="team-img" src="images/team/team-image3.webp" alt="Dr. Kevin Walsh">
+                            <div class="social-overlay">
+                                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                            </div>
+                            <div class="team-info">
+                                <h5>Dr. Kevin Walsh</h5>
+                                <span>Head of Clinical Research</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="800ms">
+                        <div class="team-card">
+                            <img class="team-img" src="images/team/team-image4.webp" alt="Dr. Mei Lin">
+                            <div class="social-overlay">
+                                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                            </div>
+                            <div class="team-info">
+                                <h5>Dr. Mei Lin</h5>
+                                <span>Director of Bioinformatics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Values -->
+        <section class="values-section">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-5 wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="900ms">
+                        <span class="sec-label">Core Values</span>
+                        <h2 class="sec-heading">Principles That <br>Guide Every Decision</h2>
+                        <p style="color: #666; font-size: 16px; line-height: 1.8; margin-bottom: 32px;">Our values are not aspirations — they are the daily standard by which every scientist, researcher, and partner at STACKLY operates.</p>
+                        <a href="services.html" class="btn-one">Explore Our Services <i class="fa-solid fa-arrow-right ms-2"></i></a>
+                    </div>
+                    <div class="col-lg-7 wow fadeInRight" data-wow-delay="100ms" data-wow-duration="900ms">
+                        <div class="value-item">
+                            <div class="v-icon"><i class="fa-solid fa-flask"></i></div>
+                            <div>
+                                <h5>Scientific Integrity</h5>
+                                <p>Every result is reproducible, every claim is evidence-backed. We uphold the highest standards of research transparency and data fidelity.</p>
+                            </div>
+                        </div>
+                        <div class="value-item">
+                            <div class="v-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                            <div>
+                                <h5>Relentless Innovation</h5>
+                                <p>We challenge existing paradigms, embrace emerging technologies, and never settle for "good enough" in our pursuit of scientific breakthroughs.</p>
+                            </div>
+                        </div>
+                        <div class="value-item">
+                            <div class="v-icon"><i class="fa-solid fa-handshake"></i></div>
+                            <div>
+                                <h5>Collaborative Spirit</h5>
+                                <p>Great science is built on great partnerships. We work closely with our clients, sharing knowledge and co-creating solutions with a team-first mindset.</p>
+                            </div>
+                        </div>
+                        <div class="value-item">
+                            <div class="v-icon"><i class="fa-solid fa-earth-asia"></i></div>
+                            <div>
+                                <h5>Global Responsibility</h5>
+                                <p>Our work impacts lives worldwide. We act with ethical awareness, ensuring our innovations are accessible, equitable, and environmentally sustainable.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="800ms">
+                    <h2>Join the Next Frontier of Biotech</h2>
+                    <p>Whether you're a researcher, pharma partner, or health institution — STACKLY is your gateway to breakthrough scientific solutions.</p>
+                    <div>
+                        <a href="contact.html" class="btn-cta-white"><i class="fa-solid fa-paper-plane"></i> Get In Touch</a>
+                        <a href="services.html" class="btn-cta-outline"><i class="fa-solid fa-flask"></i> View Our Services</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="main-footer footer-style-one">
+            <div class="outer-box">
+                <div class="footer-left">
+                    <div class="logo">
+                        <a href="index.html"><img src="images/logo-light.webp" alt="Logo"></a>
+                    </div>
+                    <button class="back-top-btn scroll-to-top">
+                        <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="1.5" cy="1.5" r="1.5" fill="white"/>
+                            <circle cx="1.5" cy="9.5" r="1.5" fill="white"/>
+                            <circle cx="1.5" cy="17.5" r="1.5" fill="white"/>
+                            <circle cx="9.5" cy="1.5" r="1.5" fill="white"/>
+                            <circle cx="9.5" cy="9.5" r="1.5" fill="white"/>
+                            <circle cx="9.5" cy="17.5" r="1.5" fill="white"/>
+                            <circle cx="17.5" cy="1.5" r="1.5" fill="white"/>
+                            <circle cx="17.5" cy="9.5" r="1.5" fill="white"/>
+                            <circle cx="17.5" cy="17.5" r="1.5" fill="white"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="row g-0 w-100">
+                    <div class="col-xl-8 left-column order-2 order-xl-1">
+                        <div class="footer-top">
+                            <div class="row g-4">
+                                <div class="col-lg-4">
+                                    <div class="info-item">
+                                        <ul>
+                                            <li><i class="fa-sharp fa-solid fa-phone"></i></li>
+                                            <li><span>Call Us:</span><h5 class="title">+91 9876543210</h5></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="info-item">
+                                        <ul>
+                                            <li><i class="fa-sharp fa-solid fa-envelope"></i></li>
+                                            <li><span>Email Us:</span><h5 class="title">info@stackly.com</h5></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="info-item">
+                                        <ul>
+                                            <li><i class="fa-sharp fa-solid fa-location-dot"></i></li>
+                                            <li><span>Hours:</span><h5 class="title">Daily: 8 AM to 5 PM</h5></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="widgets-section">
+                            <div class="row g-4">
+                                <div class="col-lg-4 footer-column">
+                                    <div class="footer-widget links-widget">
+                                        <h4 class="widget-title">Services</h4>
+                                        <div class="widget-content">
+                                            <ul class="user-links">
+                                                <li><a href="services.html">Genomic Sequencing</a></li>
+                                                <li><a href="services.html">Bioinformatics</a></li>
+                                                <li><a href="services.html">Molecular Research</a></li>
+                                                <li><a href="services.html">Clinical Trials</a></li>
+                                                <li><a href="services.html">Drug Discovery</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 footer-column">
+                                    <div class="footer-widget links-widget">
+                                        <h4 class="widget-title">Pages</h4>
+                                        <div class="widget-content">
+                                            <ul class="user-links">
+                                                <li><a href="blog.html">Our Blog</a></li>
+                                                <li><a href="about.html">About Us</a></li>
+                                                <li><a href="contact.html">Contact Us</a></li>
+                                                <li><a href="services.html">Services</a></li>
+                                                <li><a href="index.html">Home</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 footer-column">
+                                    <div class="footer-widget links-widget">
+                                        <h4 class="widget-title">Signup Newsletter</h4>
+                                        <div class="input-feild">
+                                            <input type="text" placeholder="Email Address">
+                                            <a class="btn-one-rounded" href="login.html?tab=signup">Sign up now <i class="fa-regular fa-angle-right"></i></a>
+                                        </div>
+                                        <ul class="footer-nav">
+                                            <li><a href="https://facebook.com"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                            <li><a href="https://twitter.com"><i class="fa-solid fa-x"></i></a></li>
+                                            <li><a href="https://vimeo.com"><i class="fa-brands fa-vimeo-v"></i></a></li>
+                                            <li><a href="https://pinterest.com"><i class="fa-brands fa-pinterest-p"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="footer-bottom">
+                            <p class="copyright-text">© Copyright 2026. All Right by <a href="index.html">STACKLY</a></p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 right-column order-1 order-xl-2">
+                        <div class="inner-column">
+                            <h3 class="title">Have a Research Proposal?</h3>
+                            <a class="circle-btn" href="contact.html">Contact Us <i class="fa-regular fa-arrow-up-right"></i></a>
+                            <div class="mt-10">
+                                <h5 class="time">09 : 00 AM - 10 : 30 PM</h5>
+                                <h5 class="date">Saturday - Thursday</h5>
+                            </div>
+                        </div>
+                        <div class="shape">
+                            <img src="images/shape/footer-one-shape.webp" alt="Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- End Page Wrapper -->
+    <script src="js/jquery.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/appear.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/gsap.min.js"></script>
+    <script src="js/ScrollTrigger.min.js"></script>
+    <script src="js/nice-select.min.js"></script>
+    <script src="js/splitting.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        (function() {
+            function dismissPreloader() {
+                var pre = document.querySelector('.preloader');
+                if (pre) {
+                    pre.style.transition = 'opacity 0.5s ease';
+                    pre.style.opacity = '0';
+                    setTimeout(function() { pre.style.display = 'none'; }, 600);
+                }
+            }
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(dismissPreloader, 500);
+            });
+            setTimeout(dismissPreloader, 2500);
+        })();
+    </script>
+</body>
+
+</html>
