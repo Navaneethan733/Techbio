@@ -26569,3 +26569,482 @@ $grid-breakpoints: (
         font-size: 3rem;
     }
 }
+
+/*==================================================================
+  Premium Footer Overhaul
+==================================================================*/
+
+.footer-style-premium {
+    background-color: var(--theme-color10) !important;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.footer-style-premium::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(27,103,243,0.1) 0%, rgba(11,19,43,0) 70%);
+    animation: premiumGlow 15s ease-in-out infinite alternate;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes premiumGlow {
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.2) translate(5%, 5%); }
+}
+
+.footer-style-premium .widget-title {
+    color: var(--theme-color-white);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.footer-style-premium .user-links li a {
+    color: #b0b5c1;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.footer-style-premium .user-links li a:hover {
+    color: var(--theme-color-white);
+    padding-left: 8px;
+}
+
+.footer-style-premium .user-links li a::before {
+    display: none;
+}
+
+.footer-style-premium .user-links li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 1px;
+    background-color: var(--theme-color1);
+    transition: all 0.3s ease;
+}
+
+.footer-style-premium .user-links li a:hover::after {
+    width: calc(100% - 8px);
+    left: 8px;
+}
+
+/* Right Column - Glassmorphism Card */
+.footer-style-premium .right-column {
+    background: transparent !important;
+    padding: 0 !important;
+    z-index: 2;
+}
+
+.footer-style-premium .right-column .inner-column {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 50px 30px !important;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.footer-style-premium .right-column .inner-column:hover {
+    transform: translateY(-5px);
+}
+
+.footer-style-premium .right-column .inner-column .title {
+    font-size: 32px !important;
+    font-weight: 700;
+    line-height: 1.3 !important;
+    margin-bottom: 30px !important;
+}
+
+.footer-style-premium .right-column .inner-column .circle-btn {
+    width: 160px !important;
+    height: 160px !important;
+    line-height: 160px !important;
+    background: linear-gradient(135deg, var(--theme-color1), var(--theme-color4)) !important;
+    box-shadow: 0 10px 30px rgba(27, 103, 243, 0.4);
+    margin-bottom: 20px !important;
+}
+
+.footer-style-premium .right-column .inner-column .time {
+    font-size: 13px !important;
+    color: #a0a5b1 !important;
+    letter-spacing: 1px;
+}
+
+.footer-style-premium .right-column .inner-column .date {
+    font-size: 15px !important;
+    color: var(--theme-color-white) !important;
+    font-weight: 500 !important;
+}
+
+.footer-style-premium .right-column .shape {
+    display: none !important;
+}
+
+/* Footer Bottom */
+.footer-style-premium .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/*==================================================================
+  Alternative Mobile-Responsive Footer
+==================================================================*/
+
+.footer-style-alt {
+    background-color: var(--theme-color10) !important;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-style-alt .widget-title {
+    color: var(--theme-color-white);
+    font-weight: 600;
+}
+
+.footer-style-alt .user-links li a {
+    color: #b0b5c1;
+    transition: all 0.3s ease;
+}
+
+.footer-style-alt .user-links li a:hover {
+    color: var(--theme-color-white);
+    padding-left: 5px;
+}
+
+.footer-style-alt .right-column {
+    background: transparent !important;
+    padding: 30px 15px !important;
+    z-index: 2;
+    text-align: left;
+}
+
+.footer-style-alt .right-column .inner-column {
+    background: transparent !important;
+    padding: 0 !important;
+    border: none;
+    box-shadow: none;
+}
+
+.footer-style-alt .right-column .inner-column .title {
+    font-size: 28px !important;
+    font-weight: 700;
+    line-height: 1.3 !important;
+    margin-bottom: 20px !important;
+    color: var(--theme-color-white);
+}
+
+.footer-style-alt .right-column .inner-column .btn-one {
+    margin-bottom: 20px;
+}
+
+.footer-style-alt .right-column .inner-column .time {
+    font-size: 14px !important;
+    color: #a0a5b1 !important;
+    letter-spacing: 1px;
+}
+
+.footer-style-alt .right-column .inner-column .date {
+    font-size: 16px !important;
+    color: var(--theme-color-white) !important;
+    font-weight: 500 !important;
+}
+
+.footer-style-alt .right-column .shape {
+    display: none !important;
+}
+
+.footer-style-alt .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    margin-top: 30px;
+}
+
+/* Mobile Alignment fixes */
+@media (max-width: 991.98px) {
+    .footer-style-alt .footer-left,
+    .footer-style-alt .footer-top,
+    .footer-style-alt .widgets-section,
+    .footer-style-alt .footer-bottom,
+    .footer-style-alt .right-column {
+        text-align: center;
+    }
+    
+    .footer-style-alt .right-column .inner-column {
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .footer-style-alt .footer-widget.about-widget .input-feild {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .footer-style-alt .footer-nav {
+        justify-content: center;
+        margin-top: 20px;
+    }
+}
+
+/*==================================================================
+  MedLab Style Footer
+==================================================================*/
+
+.footer-medlab-style {
+    background-color: #f8f9fa !important;
+    position: relative;
+    z-index: 1;
+    font-family: var(--text-font);
+}
+
+.footer-medlab-style .footer-top-area {
+    padding: 60px 0;
+}
+
+.footer-medlab-style .footer-widget {
+    position: relative;
+}
+
+.footer-medlab-style .widget-title {
+    color: #333;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-medlab-style .widget-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 40px;
+    height: 3px;
+    background-color: var(--theme-color1);
+}
+
+.footer-medlab-style .about-widget .logo img {
+    max-width: 180px;
+}
+
+.footer-medlab-style .about-widget .text {
+    color: #666;
+    font-size: 15px;
+    line-height: 24px;
+}
+
+.footer-medlab-style .subscribe-box {
+    position: relative;
+    max-width: 100%;
+}
+
+.footer-medlab-style .subscribe-box input {
+    width: 100%;
+    height: 50px;
+    padding: 10px 50px 10px 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    font-size: 15px;
+}
+
+.footer-medlab-style .subscribe-box button {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    color: var(--theme-color1);
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.footer-medlab-style .social-icons {
+    display: flex;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.footer-medlab-style .social-icons li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    color: var(--theme-color1);
+    border-radius: 50%;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.footer-medlab-style .social-icons li a:hover {
+    background-color: var(--theme-color1);
+    color: #fff;
+}
+
+.footer-medlab-style .blog-widget .post-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.footer-medlab-style .blog-widget .post-item:last-child {
+    margin-bottom: 0;
+}
+
+.footer-medlab-style .blog-widget .post-item .thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.footer-medlab-style .blog-widget .post-item .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.footer-medlab-style .blog-widget .post-item .info .title {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 5px;
+}
+
+.footer-medlab-style .blog-widget .post-item .info .title a {
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.footer-medlab-style .blog-widget .post-item .info .title a:hover {
+    color: var(--theme-color1);
+}
+
+.footer-medlab-style .blog-widget .post-item .info .date {
+    font-size: 13px;
+    color: #888;
+}
+
+.footer-medlab-style .contact-widget .contact-info {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.footer-medlab-style .contact-widget .contact-info li {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.footer-medlab-style .contact-widget .contact-info li:last-child {
+    margin-bottom: 0;
+}
+
+.footer-medlab-style .contact-widget .contact-info li .icon {
+    font-size: 20px;
+    color: var(--theme-color1);
+    margin-right: 15px;
+    margin-top: 3px;
+}
+
+.footer-medlab-style .contact-widget .contact-info li .content p {
+    color: #666;
+    margin-bottom: 5px;
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+.footer-medlab-style .contact-widget .contact-info li .content .btn-directions {
+    display: inline-block;
+    background-color: var(--theme-color1);
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.footer-medlab-style .contact-widget .contact-info li .content .btn-directions:hover {
+    background-color: #0056b3;
+}
+
+.footer-medlab-style .contact-widget .contact-info li .content .small-text {
+    font-size: 13px;
+    color: #888;
+}
+
+.footer-medlab-style .footer-bottom-area {
+    background-color: var(--theme-color1);
+    padding: 20px 0;
+    position: relative;
+}
+
+.footer-medlab-style .footer-bottom-area .copyright-text {
+    color: #fff;
+    font-size: 14px;
+}
+
+.footer-medlab-style .footer-bottom-area .copyright-text a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.footer-medlab-style .footer-bottom-area .emergency-contact {
+    color: #fff;
+    font-size: 15px;
+}
+
+.footer-medlab-style .footer-bottom-area .back-top-btn {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--theme-color1);
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.footer-medlab-style .footer-bottom-area .back-top-btn:hover {
+    background-color: #fff;
+    color: var(--theme-color1);
+}
+
+@media (max-width: 767px) {
+    .footer-medlab-style .footer-bottom-area .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    .footer-medlab-style .footer-bottom-area .back-top-btn {
+        right: 10px;
+        bottom: -60px;
+    }
+}
